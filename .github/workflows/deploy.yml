@@ -1,0 +1,31 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - main # main分支部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to server
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          echo "$DEPLOY_KEY" > deploy_key
+          chmod 600 deploy_key
+          rsync -avz -e "ssh -i deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete --exclude '.git*' ./build/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
+          rm -f deploy_key
