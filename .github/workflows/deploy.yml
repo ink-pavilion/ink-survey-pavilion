@@ -36,5 +36,5 @@ jobs:
         run: |
           echo "$DEPLOY_KEY" > deploy_key
           chmod 600 deploy_key
-          rsync -avz -e "ssh -i deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete --exclude '.git*' ./build/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
+          rsync -avz -e "ssh -i deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete --exclude '.git*' ./dist/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
           rm -f deploy_key
