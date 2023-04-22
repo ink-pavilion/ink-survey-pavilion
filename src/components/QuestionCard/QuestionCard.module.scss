@@ -1,0 +1,47 @@
+.q-c__container {
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 3px;
+  background: #fff;
+
+  &:hover {
+    box-shadow: 0 4px 10px #e8e8e8;
+  }
+}
+
+.q-c__title {
+  display: flex;
+
+  .q-c__title__left {
+    flex: 1;
+  }
+
+  .q-c__title__right {
+    flex: 1;
+    text-align: right;
+    font-size: 12px;
+
+    .q-c__title__right-count {
+    }
+
+    .q-c__title__right-time {
+    }
+  }
+}
+
+.q-c__divider {
+  margin: 10px 0;
+}
+
+.q-c__bottom {
+  display: flex;
+
+  .q-c__bottom__left {
+    flex: 1;
+  }
+
+  .q-c__bottom__right {
+    flex: 1;
+    text-align: right;
+  }
+}

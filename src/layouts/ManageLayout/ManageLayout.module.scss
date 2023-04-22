@@ -1,0 +1,15 @@
+.manage-layout__container {
+  display: flex;
+  padding: 24px 0;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.manage-layout__left {
+  width: 120px;
+}
+
+.manage-layout__right {
+  flex: 1;
+  margin-left: 60px;
+}
